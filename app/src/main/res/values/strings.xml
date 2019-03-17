@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GMDb</string>
+    <string name="title_activity_movies">MoviesActivity</string>
+    <string name="movie_title_failed_loading">Failed to load title\nRETRY</string>
+    <string name="failed_to_load_movies">Failed to load movies\nRETRY</string>
+    <string name="movie_details_language">Language: %s</string>
+    <string name="movie_details_genre">Genre: %s</string>
+    <string name="movie_details_release_date">Release date: %s</string>
+    <string name="youtube_trailer">YouTube Trailer</string>
+</resources>

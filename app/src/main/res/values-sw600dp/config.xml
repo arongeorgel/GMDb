@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="portrait_only">false</bool>
+    <integer name="grid_movie_span">6</integer>
+    <dimen name="movie_grid_item_height">220dp</dimen>
+</resources>
