@@ -5,6 +5,7 @@ import android.content.Context
 import com.garon.gmdb.GmdbApplication
 import com.garon.gmdb.movieDetails.di.MovieDetailsComponent
 import com.garon.gmdb.movies.di.MoviesComponent
+import com.garon.gmdb.utils.DefaultCalendar
 import com.garon.gmdb.utils.IoScheduler
 import dagger.BindsInstance
 import dagger.Component
@@ -17,6 +18,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 import javax.inject.Singleton
 
 @Singleton
@@ -61,6 +63,11 @@ class NetworkModule {
     @Singleton
     @IoScheduler
     fun providesIoScheduler(): Scheduler = Schedulers.io()
+
+    @Provides
+    @Singleton
+    @DefaultCalendar
+    fun providesCalendar(): Calendar = Calendar.getInstance()
 
     @Provides
     @Singleton
