@@ -18,7 +18,7 @@ interface MoviesView {
     fun movieList(list: List<Int>)
 
     enum class DaysDateRange {
-        LAST_3, LAST_5, LAST_10, LAST_15
+        LAST_3, LAST_5, LAST_10, LAST_14
     }
 }
 

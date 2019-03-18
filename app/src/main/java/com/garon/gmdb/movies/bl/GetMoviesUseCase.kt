@@ -1,5 +1,6 @@
 package com.garon.gmdb.movies.bl
 
+import androidx.annotation.VisibleForTesting
 import com.garon.gmdb.movies.MoviesView
 import com.garon.gmdb.movies.di.MoviesScope
 import com.garon.gmdb.utils.*
@@ -14,7 +15,8 @@ import javax.inject.Inject
 @MoviesScope
 class GetMoviesUseCase @Inject constructor(
     private val moviesApi: GetMoviesApi,
-    @IoScheduler val scheduler: Scheduler
+    @DefaultCalendar private val calendar: Calendar,
+    @IoScheduler private val scheduler: Scheduler
 ) {
 
     private val inProgress: AtomicBoolean = AtomicBoolean(false)
@@ -44,8 +46,8 @@ class GetMoviesUseCase @Inject constructor(
     /**
      * Based on the give range return a pair with start date and end date
      */
-    internal fun getDateRange(daysDateRange: MoviesView.DaysDateRange): Pair<String, String> {
-        val calendar = Calendar.getInstance()
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun getDateRange(daysDateRange: MoviesView.DaysDateRange): Pair<String, String> {
         val dateFormatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val endDate = dateFormatter.format(calendar.time)
 
@@ -62,8 +64,8 @@ class GetMoviesUseCase @Inject constructor(
                 calendar.add(Calendar.DATE, -10)
                 dateFormatter.format(calendar.time)
             }
-            MoviesView.DaysDateRange.LAST_15 -> {
-                calendar.add(Calendar.DATE, -15)
+            MoviesView.DaysDateRange.LAST_14 -> {
+                calendar.add(Calendar.DATE, -14)
                 dateFormatter.format(calendar.time)
             }
         }
